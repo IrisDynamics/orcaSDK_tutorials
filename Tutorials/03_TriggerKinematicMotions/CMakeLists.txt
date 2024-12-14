@@ -1,0 +1,6 @@
+add_executable(03_TriggerKinematicMotions
+	main.cpp
+)
+
+target_link_libraries(03_TriggerKinematicMotions PRIVATE orcaSDK::core)
+target_link_libraries(03_TriggerKinematicMotions PRIVATE tutorialHelpers)
