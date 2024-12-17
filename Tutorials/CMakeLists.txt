@@ -6,9 +6,10 @@ find_package(orcaSDK REQUIRED PATHS C:/Users/AidenBull/Documents/orcaSDK/build)
 add_subdirectory(helpers)
 
 #Begin adding tutorials here
-add_subdirectory(01_ReadPosition)
+add_subdirectory(01_HelloWorld_ReadPosition)
 add_subdirectory(02_ReadOrcaMode)
 add_subdirectory(03_TriggerKinematicMotions)
 add_subdirectory(04_LogPosition)
 add_subdirectory(05_CommandStream)
 add_subdirectory(06_ForceControl)
+add_subdirectory(07_HapticControl)
