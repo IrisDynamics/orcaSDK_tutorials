@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 
 project(orcaSDK_tutorials)
 
-find_package(orcaSDK REQUIRED PATHS C:/Users/AidenBull/Documents/orcaSDK/build)
+find_package(orcaSDK REQUIRED)
 add_subdirectory(helpers)
 
 #Begin adding tutorials here
