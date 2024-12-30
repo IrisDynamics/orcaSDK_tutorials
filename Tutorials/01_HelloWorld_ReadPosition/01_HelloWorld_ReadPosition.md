@@ -91,6 +91,29 @@ Note: The spaces and '\r' following the position value allow the function to cle
 
 With this you have completed writing the most basic orcaSDK program! Try running the program and see what your motor's position is. Try pushing your motor's shaft back and forth, and see how it changes the output.
 
+# Adding Tutorial Helpers Generalization
+
+Each tutorial also contains example source code for what the completed tutorial should look like. For each of them, they use a helper function for obtaining the serial port number from console input rather than having the number be hard-coded as this tutorial suggests. Each subsequent tutorial will assume we use the helper function, so we will quickly describe it here.
+
+```./main.cpp
+...
+	int serial_port = obtain_serial_port_number();
+
+	motor.open_serial_port(serial_port);
+...
+```
+
+This is what the updated code looks like. The helper function obtain_serial_port_number() simply prompts the user for input and returns whatever number they pass into the console. After capturing this number, the resulting variable can be used as the hard-coded value was earlier.
+
+In order to use the helper function we will need to include it, so we also add an #include statement to the top of the file
+
+```./main.cpp
+#include <iostream>
+#include "actuator.h"
+#include "TutorialHelpers.h"
+...
+```
+
 # What's Next?
 
 Now that you've completed the basic orcaSDK tutorial, feel free to browse the remaining tutorials and read them in any order that feels appropriate. If the tutorial you wish to read next contains a prerequisite that you have not read yet, please complete that prerequisite before continuing.
