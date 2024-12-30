@@ -4,12 +4,11 @@
 #include <cmath>
 
 int main() {
-	Actuator motor{ 0, "MyMotorName" };
+	Actuator motor{ "MyMotorName" };
 
 	int com_port = obtain_serial_port_number();
 
-	motor.set_new_serial_port(com_port);
-	motor.open_serial_port();
+	motor.open_serial_port(com_port);
 
 	motor.clear_errors(); // Orca motors raise an error when communication stops during haptics mode
 

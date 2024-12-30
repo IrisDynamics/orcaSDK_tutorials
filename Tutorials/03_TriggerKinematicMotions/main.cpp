@@ -3,12 +3,11 @@
 #include "tools/Timer.h"
 
 int main() {
-	Actuator motor{ 0, "MyMotorName" };
+	Actuator motor{ "MyMotorName" };
 
 	int com_port = obtain_serial_port_number();
 
-	motor.set_new_serial_port(com_port);
-	motor.open_serial_port();
+	motor.open_serial_port(com_port);
 
 	//Set the default motion id upon starting Kinematic mode
 	motor.write_register_blocking(KIN_HOME_ID, 0);
