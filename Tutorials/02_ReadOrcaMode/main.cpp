@@ -1,3 +1,4 @@
+#include <iostream>
 #include "actuator.h" 
 #include "TutorialHelpers.h"
 
@@ -21,9 +22,9 @@ std::string motor_mode_to_string(int mode_val) {
 int main() {
 	Actuator motor{ "MyMotorName" };
 
-	int com_port = obtain_serial_port_number();
+	int serial_port = obtain_serial_port_number();
 
-	motor.open_serial_port(com_port);
+	motor.open_serial_port(serial_port);
 
 	while (true) {
 		std::cout << "Current Mode: " << motor_mode_to_string(motor.get_mode().value) << "                 \r";

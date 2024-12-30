@@ -1,3 +1,4 @@
+#include <iostream>
 #include "actuator.h"
 #include "TutorialHelpers.h"
 #include "tools/log.h"
@@ -5,9 +6,9 @@
 int main() {
 	Actuator motor{ "MyMotorName" };
 
-	int com_port = obtain_serial_port_number();
+	int serial_port = obtain_serial_port_number();
 
-	motor.open_serial_port(com_port);
+	motor.open_serial_port(serial_port);
 
 	Log log{ Log::TimestampType::DurationSinceOpening };
 	OrcaError error = log.open("tutorial_log");
