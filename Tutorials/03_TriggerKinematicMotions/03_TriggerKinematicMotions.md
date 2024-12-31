@@ -2,8 +2,6 @@
 
 In this tutorial we will set up an app that sets up and periodically triggers a small set of kinematic motions.
 
-## The Source Code
-
 We begin with the source code from tutorial 1:
 
 ```./main.cpp
@@ -27,7 +25,7 @@ int main() {
 }
 ```
 
-### Set up the kinematic motions
+## Set up the kinematic motions
 
 First we will set up our kinematic motions as we desire. We will define two motions with one linking into the other. This is the code for setting up these motions:
 
@@ -64,7 +62,7 @@ Next we need to switch to kinematic mode:
 
 This command switches the mode of operation. Switching to kinematic mode automatically executes the home motion of the motor. Try running the code and see what it does. If your motor's home motion hasn't been changed, it should execute the motions that we just defined.
 
-### Repeat the kinematic motions
+## Repeat the kinematic motions
 
 Now let's update the app to repeat the motion periodically. To do so we're going to use our library's Timer object. This object is an abstraction for simple timer operations. Here is the code that creates and sets up this object.
 
