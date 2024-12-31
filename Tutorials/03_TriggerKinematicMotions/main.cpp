@@ -10,12 +10,10 @@ int main() {
 
 	motor.open_serial_port(serial_port);
 
-	//Set the default motion id upon starting Kinematic mode
-	motor.write_register_blocking(KIN_HOME_ID, 0);
 	//Motion that moves to position 50000 in 1000 milliseconds, then triggers motion 1
-	motor.set_kinematic_motion(0, 50000, 1000, 0, 1, 1, 1);
+	motor.set_kinematic_motion(0, 50000, 1000, 0, 1, true, 1);
 	//Motion that moves to position 10000 in 1000 milliseconds
-	motor.set_kinematic_motion(1, 10000, 1000, 0, 1, 0);
+	motor.set_kinematic_motion(1, 10000, 1000, 0, 1, false);
 	motor.set_mode(MotorMode::KinematicMode);
 
 	Timer trigger_kinematic_motion_timer;
