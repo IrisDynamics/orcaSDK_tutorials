@@ -1,8 +1,11 @@
-# Trigger Kinematic Motions
+# Log Position
 
-In this tutorial we will set up an app that sets up and periodically triggers a small set of kinematic motions.
+In this tutorial we will set up a basic app that outputs position data from a motor to a log file.
 
-## The Source Code
+## Prerequisites
+ - [Tutorial 04 - Error Handling](../04_ErrorHandling/04_ErrorHandling.md)
+  
+## 
 
 We begin with the source code from tutorial 1:
 
@@ -27,73 +30,65 @@ int main() {
 }
 ```
 
-### Set up the kinematic motions
+## Construct a Log Object
 
-First we will set up our kinematic motions as we desire. We will define two motions with one linking into the other. This is the code for setting up these motions:
-
-```./main.cpp
-    ...
-	motor.set_kinematic_motion(0, 50000, 1000, 0, 1, true, 1);
-	motor.set_kinematic_motion(1, 10000, 1000, 0, 1, false);
-    ...
-```
-
-That is a lot of parameters. Within those numbers is the definition for an Orca kinematic motion. Let's break down each parameter for the first motion:
-
-```
-	motor.set_kinematic_motion(
-        0,     //The motion ID to be updated
-        50000, //The position that this motion should go toward
-        1000,  //The time in milliseconds that the motion should take
-        0,     //The delay in milliseconds after completing this motion before starting the next
-        1,     //The motion shape (minimized power vs jerk)
-        true,  //Whether this motion should link into another automatically
-        1      //The motion ID that should be automatically linked to
-    );    
-```
-
-Now describing this function call in english. We edit motion 0, to move to position 50000um in 1000ms, then without delay begin motion 1. The second statement is similar, but moves to position 10000um and doesn't link to another motion.
-
-Next we need to switch to kinematic mode:
+Our SDK contains an object to help facilitate logging easily. For this tutorial we will make use of this object. First lets construct an instance of it.
 
 ```./main.cpp
     ...
-    motor.set_mode(MotorMode::KinematicMode);
+	Log log{ Log::TimestampType::DurationSinceOpening };
     ...
 ```
 
-This command switches the mode of operation. Switching to kinematic mode automatically executes the home motion of the motor. Try running the code and see what it does. If your motor's home motion hasn't been changed, it should execute the motions that we just defined.
+The Log object adds a timestamp to all messages logged through it. The constructor parameter indicates what form this timestamp should take. There are only two valid parameters for this constructor. 
+- Log::TimestampType::DurationSinceOpening
+  - Time in microseconds since opening the file
+- Log::TimestampType::CurrentDateTime
+  - The current date and time of day
 
-### Repeat the kinematic motions
+## Open the File
 
-Now let's update the app to repeat the motion periodically. To do so we're going to use our library's Timer object. This object is an abstraction for simple timer operations. Here is the code that creates and sets up this object.
+Now let's open a file using the object.
 
 ```./main.cpp
     ...
-	Timer trigger_kinematic_motion_timer;
-	trigger_kinematic_motion_timer.set(5000);
+	Log log{ Log::TimestampType::DurationSinceOpening };
+	OrcaError error = log.open(<path-to-your-file-here>);
+	if (error)
+	{
+		std::cout << error.what(); 
+		return -1;
+	}
     ...
 ```
 
-The first line constructs a Timer object, and the second begins the timer, with a time of 5000ms.
+Inside the call to log.open() is the path to the log file you'd like created. If you pass it a relative path (doesn't contain a prefixed '/' or '~'), then the file will be placed relative to the resulting built executable. If you're struggling with locating the executable, consider using an absolute path instead.
 
-Now we need to check the Timer, and act on it when it expires.
+## Write to the Log
+
+If we were able to open the log file successfully, then we're ready to begin writing to it.
 
 ```./main.cpp
     ...
-    while (true) {
-		if (trigger_kinematic_motion_timer.has_expired()) {
-			motor.trigger_kinematic_motion(0);
-			trigger_kinematic_motion_timer.reset();
-		}
+	while (true) {
+		int32_t current_position = motor.get_position_um().value;
+		std::string curr_position_str = "Current Position: " + std::to_string(current_position);
 
-		std::cout << "Current Position: " << motor.get_position_um().value << "                \r";
-    }
+		log.write(curr_position_str);
+		std::cout << curr_position_str << "            \r";
+	}
     ...
 ```
 
-There are 3 functions introduced here. The function trigger_kinematic_motion_timer.has_expired() simply returns true if the last set timer has expired and false otherwise. The function trigger_kinematic_motion_timer.reset() sets the timer again with the last set duration.
+Take a look at the file given by the path you provided to the Log object. It should now be filled with timestamped data showing the motor's position while your program was running.
 
-The function that actually communicates with the motor to trigger a motion is motor.trigger_kinematic_motion(0). This function triggers the motion contained in the passed in parameter. In this case it triggers motion ID 0 to begin.
+## Reducing Log Verbosity
 
-At this point the behaviour of the motor should be that it moves 40000mm in one direction and back, and it should repeat that motion every 5 seconds.
+If your goal is to output data for consumption by another program, such as Microsoft Excel, then the extra text that is being printed may get in the way of your goal. In this case, it may be more useful to simply use the standard library's std::ofstream. If you would still like to use our abstraction, however, the Log does have a function which removes most of the extra text (except for newlines). This can be done by adding the following line of code.
+
+```./main.cpp
+    ...
+	Log log{ Log::TimestampType::DurationSinceOpening };
+	log.set_verbose_mode(false);
+    ...
+```
