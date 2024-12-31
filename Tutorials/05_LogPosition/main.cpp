@@ -11,7 +11,7 @@ int main() {
 	motor.open_serial_port(serial_port);
 
 	Log log{ Log::TimestampType::DurationSinceOpening };
-	OrcaError error = log.open("tutorial_log");
+	OrcaError error = log.open("/Users/AidenBull/Documents/tutorial_log.txt");
 	if (error) // Check to make sure we were able to open the file correctly
 	{
 		std::cout << error.what(); // Print out what went wrong

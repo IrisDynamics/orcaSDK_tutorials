@@ -43,7 +43,7 @@ That is a lot of parameters. Within those numbers is the definition for an Orca 
 ```
 	motor.set_kinematic_motion(
         0,     //The motion ID to be updated
-        50000, //The position that this motion should move to
+        50000, //The position that this motion should go toward
         1000,  //The time in milliseconds that the motion should take
         0,     //The delay in milliseconds after completing this motion before starting the next
         1,     //The motion shape (minimized power vs jerk)
