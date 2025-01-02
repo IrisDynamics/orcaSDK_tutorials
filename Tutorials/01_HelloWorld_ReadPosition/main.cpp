@@ -11,7 +11,7 @@ int main() {
 	
 	while (true)
 	{
-		std::cout << "Current motor position: " << motor.get_position_um().value << "          \r";
+		std::cout << "Current Position: " << motor.get_position_um().value << "          \r";
 	}
 
 	return 0;
