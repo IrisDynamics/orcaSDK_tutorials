@@ -30,7 +30,7 @@ int main() {
 			force_to_command_mN *= -1; // Flip the force direction
 		}
 
-		std::cout << "Current sensed force: " << motor.stream_cache.force << "                    \r";
+		std::cout << "Current Sensed Force: " << motor.stream_cache.force << "                    \r";
 	}
 
 	return 0;
