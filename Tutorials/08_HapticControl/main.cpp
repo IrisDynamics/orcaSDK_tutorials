@@ -17,26 +17,26 @@ int main() {
 
 	motor.set_mode(MotorMode::HapticMode); //Switch to haptic mode
 
-	motor.update_haptic_stream_effects(Actuator::ConstF + Actuator::Spring0);
+	motor.update_haptic_stream_effects(Actuator::Osc0 + Actuator::Spring0);
 
 	motor.set_spring_effect( //Update spring parameters
-		0,		//Spring ID (0 or 1)
-		200,	//Spring strength
+		0,		//Spring ID (0, 1, or 2)
+		200,	//Spring strength 
 		40000	//Center position
 	);
 
-	Timer sin_wave_time_generator;
-	constexpr float sin_wave_progression_per_ms = 0.01f; //Going to update constant force using a sin wave 
-	constexpr int force_max_mN = 25000;
+	motor.set_osc_effect(
+		0,		//Oscillator ID (0 or 1)
+		20,		//Oscillator max force (newtons)
+		10,		//Period (deciseconds),
+		0,		//Duty cycle (unimportant for sin wave1)
+		Actuator::OscillatorType::Sine
+	);
 
 	while (true) {
 		motor.run();
 
-		float sin_input_progress = sin_wave_time_generator.time_elapsed() * sin_wave_progression_per_ms;
-
-		motor.set_constant_force(std::sin(sin_input_progress) * force_max_mN); //Update constant force
-
-		std::cout << "Current sensed force: " << motor.stream_cache.force <<  "                    \r";
+		std::cout << "Current Sensed Force: " << motor.stream_cache.force <<  "                    \r";
 	}
 
 	return 0;
