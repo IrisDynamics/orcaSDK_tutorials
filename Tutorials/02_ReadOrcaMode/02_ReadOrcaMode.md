@@ -28,7 +28,7 @@ int main() {
 To access the current motor mode, we'll just update one line. Instead of asking for the motor's position, we'll instead ask for its mode. The function that we will use is Actuator::get_mode(). The updated line of code looks like this:
 
 ```./main.cpp
-    std::cout << "Current Mode: " << motor.get_mode().value << "              \r";
+	std::cout << "Current Mode: " << motor.get_mode().value << "              \r";
 ```
 
 Try running the program. Try opening IrisControls and switch between Kinematic, Haptic, and Sleep modes! 
@@ -58,7 +58,7 @@ This function is defined using a switch statement with one definition for each c
 
 ```./main.cpp
 ...
-    std::cout << "Current Mode: " << motor_mode_to_string(motor.get_mode().value) << "                 \r";
+	std::cout << "Current Mode: " << motor_mode_to_string(motor.get_mode().value) << "                 \r";
 ...
 ```
 

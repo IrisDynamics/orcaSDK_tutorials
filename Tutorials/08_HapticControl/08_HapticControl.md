@@ -43,19 +43,19 @@ int main() {
 First let's update the call to set_mode(), so that we enter haptic mode instead. 
 
 ```./main.cpp
-    ...
+	...
 	motor.set_mode(MotorMode::HapticMode);
-    ...
+	...
 ```
 
 When streaming in haptic mode, Orca motors require that the client regularly stream the current haptic effects that should be active. For now, let's update that to only include a spring effect.
 
 ```./main.cpp
-    ...
+	...
 	motor.set_mode(MotorMode::HapticMode);
 
 	motor.update_haptic_stream_effects(Actuator::Spring0);
-    ...
+	...
 ```
 
 Try running the code, the motor should begin to apply a spring effect, with the parameters of the spring being whatever your saved default is for the motor.
@@ -63,7 +63,7 @@ Try running the code, the motor should begin to apply a spring effect, with the 
 Let's update the parameters of that spring effect to something that we desire.
 
 ```./main.cpp
-    ...
+	...
 	motor.set_mode(MotorMode::HapticMode);
 
 	motor.update_haptic_stream_effects(Actuator::Spring0);
@@ -73,7 +73,7 @@ Let's update the parameters of that spring effect to something that we desire.
 		200,	//Spring strength
 		40000	//Center position
 	);
-    ...
+	...
 ```
 
 Our program now enables a spring effect and controls its parameters.
@@ -84,15 +84,15 @@ Now let's update the code to add an oscillation effect. Haptics mode includes a 
 
 
 ```./main.cpp
-    ...
+	...
 	motor.update_haptic_stream_effects(Actuator::Spring0 + Actuator::Osc0);
-    ...
+	...
 ```
 
 Now we should have both a spring and an oscillator active. Next, similar to the spring, lets update the oscillator effect to have parameters we'd like.
 
 ```./main.cpp
-    ...
+	...
 	motor.set_osc_effect(
 		0,		//Oscillator ID (0 or 1)
 		20,		//Oscillator max force (newtons)
@@ -100,7 +100,7 @@ Now we should have both a spring and an oscillator active. Next, similar to the 
 		0,		//Duty cycle (unimportant for sin wave1)
 		Actuator::OscillatorType::Sine
 	);
-    ...
+	...
 ```
 
 We now have a program that commands 2 haptic effects at once, with both configured as we'd like.

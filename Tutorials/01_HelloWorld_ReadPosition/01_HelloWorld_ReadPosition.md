@@ -12,9 +12,9 @@ To begin let's start with the source file that we used but didn't explain back i
 
 int main()
 {
-    Actuator motor{ "MotorName" };
-    std::cout << "Hello World\n";
-    return 0;
+	Actuator motor{ "MotorName" };
+	std::cout << "Hello World\n";
+	return 0;
 }
 ```
 
@@ -27,7 +27,7 @@ This file is largely identical to an implementation of a C++ "Hello World", but 
 This line includes the header which contains the declaration of the main object in the SDK, the Actuator object. This object is our abstraction for an Orca linear motor.
 
 ```main.cpp
-    Actuator motor{ "MotorName" };
+	Actuator motor{ "MotorName" };
 ```
 
 This line constructs an Actuator object and assigns it to the variable "motor". Inside the curly braces is the one parameter that the motor requires. This parameter assigns the object's name, which can retrieved via the member variable Actuator::name. 
@@ -40,12 +40,12 @@ At this point we now have a virtual representation of an Orca motor, but it isn'
 
 int main()
 {
-    Actuator motor{ "MotorName" };
+	Actuator motor{ "MotorName" };
 
 	motor.open_serial_port(<your_com_port_number_here>);
 
-    std::cout << "Hello World\n";
-    return 0;
+	std::cout << "Hello World\n";
+	return 0;
 }
 ```
 
@@ -61,17 +61,17 @@ Finally, let's get some information out of the motor. The most common informatio
 
 int main()
 {
-    Actuator motor{ "MotorName" };
+	Actuator motor{ "MotorName" };
 
 	motor.open_serial_port(<your_com_port_number_here>);
 
-    std::cout << "Hello World\n";
+	std::cout << "Hello World\n";
 
-    while(true) {
+	while(true) {
 		std::cout << "Current Position: " << motor.get_position_um().value << "          \r";
-    }
+	}
 
-    return 0;
+	return 0;
 }
 ```
 
@@ -80,7 +80,7 @@ The new code we've added is in an infinite loop, because of this, it will contin
 The only line being executed inside this loop is a line that prints info to the output console. From this line, the only command that we're particularly interested in is
 
 ```./main.cpp
-    ... << motor.get_position_um().value << ...
+	... << motor.get_position_um().value << ...
 ```
 
 The function motor.get_position_um() is a blocking command that requests the current shaft position from the motor and waits for the motor to respond. This function returns an error object, the purpose of this object is to allow the user to check for errors, and handle them. To simplify this example, we simply print the value, which we access with the '.value' at the end of the function call.
