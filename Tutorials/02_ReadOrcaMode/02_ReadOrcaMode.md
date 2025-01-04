@@ -1,6 +1,6 @@
 # Read Orca Mode
 
-In this tutorial we will adjust the basic app to display whatever mode the Orca is currnetly in.
+In this tutorial we will adjust the basic app to display whatever mode the Orca is currently in.
 
 We begin with the source code from tutorial 1:
 
