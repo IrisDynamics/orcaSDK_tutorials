@@ -28,7 +28,7 @@ int main() {
 	motor.set_osc_effect(
 		0,		//Oscillator ID (0 or 1)
 		20,		//Oscillator max force (newtons)
-		10,		//Period (deciseconds),
+		10,		//Frequency (decihertz),
 		0,		//Duty cycle (unimportant for sin wave1)
 		Actuator::OscillatorType::Sine
 	);
