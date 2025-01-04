@@ -53,7 +53,7 @@ The motor.open_serial_port() function triggers the Actuator object to obtain the
 
 After calling this method, you now have not only a virtual representation of your Orca, but a representation that is now connected to your actual motor.
 
-Finally, let's get some information out of the motor. The most common information needed by the the motor is its position, so that's what we'll read. To display the active position of the motor, add the following lines.
+Finally, let's get some information out of the motor. The most common information needed from the motor is its position, so that's what we'll read. To display the active position of the motor, add the following lines.
 
 ```./main.cpp
 #include <iostream>
