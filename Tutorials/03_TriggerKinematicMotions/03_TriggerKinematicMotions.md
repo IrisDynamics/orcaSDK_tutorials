@@ -1,4 +1,4 @@
-# Trigger Kinematic Motions
+# 03 - Trigger Kinematic Motions
 
 In this tutorial we will set up an app that sets up and periodically triggers a small set of kinematic motions.
 

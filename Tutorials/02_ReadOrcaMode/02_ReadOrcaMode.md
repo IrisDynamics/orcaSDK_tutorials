@@ -1,4 +1,4 @@
-# Read Orca Mode
+# 02 - Read Orca Mode
 
 In this tutorial we will adjust the basic app to display whatever mode the Orca is currently in.
 

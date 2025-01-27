@@ -1,4 +1,4 @@
-# Log Position
+# 05 - Log Position
 
 In this tutorial we will set up a basic app that outputs position data from a motor to a log file.
 
