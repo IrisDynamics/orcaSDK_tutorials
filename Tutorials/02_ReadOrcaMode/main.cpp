@@ -2,6 +2,8 @@
 #include "actuator.h" 
 #include "TutorialHelpers.h"
 
+using namespace orcaSDK;
+
 std::string motor_mode_to_string(int mode_val) {
 	switch (mode_val) {
 	case MotorMode::SleepMode:

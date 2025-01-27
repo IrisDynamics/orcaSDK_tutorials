@@ -17,6 +17,8 @@ We start with the source code from the command stream tutorial, except for a sma
 #include "actuator.h"
 #include "TutorialHelpers.h"
 
+using namespace orcaSDK;
+
 int main() {
 	Actuator motor{ "MyMotorName" };
 
