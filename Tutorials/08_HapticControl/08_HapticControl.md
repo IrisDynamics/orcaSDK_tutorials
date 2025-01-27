@@ -1,4 +1,4 @@
-# Haptic Control
+# 08 - Haptic Control
 
 In this tutorial we will demonstrate use of the haptics mode of Orca motors through the SDK. 
 
