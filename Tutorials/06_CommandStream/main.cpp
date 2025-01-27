@@ -2,6 +2,8 @@
 #include "actuator.h"
 #include "TutorialHelpers.h"
 
+using namespace orcaSDK;
+
 int main() {
 	Actuator motor{ "MyMotorName" };
 

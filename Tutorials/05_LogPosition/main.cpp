@@ -3,6 +3,8 @@
 #include "TutorialHelpers.h"
 #include "tools/log.h"
 
+using namespace orcaSDK;
+
 int main() {
 	Actuator motor{ "MyMotorName" };
 

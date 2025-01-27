@@ -9,6 +9,8 @@ We'll start with a stripped down version of tutorial 1:
 #include "actuator.h"
 #include "TutorialHelpers.h"
 
+using namespace orcaSDK ;
+
 int main() {
 	Actuator motor{ "MyMotorName" };
 

@@ -10,6 +10,8 @@ To begin let's start with the source file that we used but didn't explain back i
 #include <iostream>
 #include "actuator.h"
 
+using namespace orcaSDK;
+
 int main()
 {
 	Actuator motor{ "MotorName" };
@@ -25,6 +27,12 @@ This file is largely identical to an implementation of a C++ "Hello World", but 
 ```
 
 This line includes the header which contains the declaration of the main object in the SDK, the Actuator object. This object is our abstraction for an Orca linear motor.
+
+```main.cpp
+using namespace orcaSDK;
+```
+
+To avoid potential name conflicts with other libraries or user-defined code, the entire SDK is encapsulated within its own namespace, orcaSDK. By including this line, we explicitly specify that we want to operate within the orcaSDK namespace. This allows us to call its methods and members directly without needing to prefix them with orcaSDK::. However, it's important to note that adding this line in header files can be potentially dangerous. Any file that includes such a header will automatically inherit the namespace, which can lead to unexpected behavior or conflicts. For this reason, it is generally recommended to avoid using using namespace in header files and instead fully qualify names when necessary.
 
 ```main.cpp
 	Actuator motor{ "MotorName" };

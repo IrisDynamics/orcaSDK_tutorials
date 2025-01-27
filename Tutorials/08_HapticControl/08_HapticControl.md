@@ -15,6 +15,8 @@ We'll start with a subset of the code from the [Force Control](../07_ForceContro
 #include "actuator.h"
 #include "TutorialHelpers.h"
 
+using namespace orcaSDK;
+
 int main() {
 	Actuator motor{ "MyMotorName" };
 

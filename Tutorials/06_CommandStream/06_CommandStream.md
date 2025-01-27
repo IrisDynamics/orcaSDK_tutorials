@@ -10,6 +10,8 @@ We begin with the source code from tutorial 1:
 #include "actuator.h"
 #include "TutorialHelpers.h"
 
+using namespace orcaSDK;
+
 int main() {
 	Actuator motor{ "MyMotorName" };
 
