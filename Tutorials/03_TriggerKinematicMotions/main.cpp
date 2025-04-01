@@ -1,7 +1,7 @@
 #include <iostream>
 #include "actuator.h"
 #include "TutorialHelpers.h"
-#include "tools/Timer.h"
+#include "tools/timer.h"
 
 using namespace orcaSDK;
 
