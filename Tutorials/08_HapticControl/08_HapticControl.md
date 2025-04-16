@@ -7,7 +7,8 @@ In this tutorial we will set up the motor to apply a spring effect, while also a
 ## Prerequisites
  - [Tutorial 07 - ForceControl](../07_ForceControl/07_ForceControl.md)
   
-## 
+---
+
 We'll start with a subset of the code from the [Force Control](../07_ForceControl/07_ForceControl.md) tutorial, once again edited to display the actively commanded force rather than the position.
 
 ```./main.cpp

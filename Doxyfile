@@ -378,7 +378,7 @@ TOC_INCLUDE_HEADINGS   = 6
 # The default value is: DOXYGEN.
 # This tag requires that the tag MARKDOWN_SUPPORT is set to YES.
 
-MARKDOWN_ID_STYLE      = DOXYGEN
+MARKDOWN_ID_STYLE      = GITHUB
 
 # When enabled Doxygen tries to link words that correspond to documented
 # classes, or namespaces to their corresponding documentation. Such a link can
@@ -973,7 +973,8 @@ INPUT                  = C:/Users/AidenBull/Documents/orcaSDK_tutorials/README.m
                          C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/05_LogPosition/05_LogPosition.md \
                          C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/06_CommandStream/06_CommandStream.md \
                          C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/07_ForceControl/07_ForceControl.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/08_HapticControl/08_HapticControl.md
+                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/08_HapticControl/08_HapticControl.md \
+                         Tutorials/09_HighSpeedCommunication/09_HighSpeedCommunication.md
 
 # This tag can be used to specify the character encoding of the source files
 # that Doxygen parses. Internally Doxygen uses the UTF-8 encoding. Doxygen uses
@@ -1128,7 +1129,10 @@ EXAMPLE_RECURSIVE      = NO
 # that contain images that are to be included in the documentation (see the
 # \image command).
 
-IMAGE_PATH             =
+IMAGE_PATH             = Tutorials/09_HighSpeedCommunication/resources/iriscontrols_comm_rate.png \
+                         Tutorials/09_HighSpeedCommunication/resources/iriscontrols_dropdown.png \
+                         Tutorials/09_HighSpeedCommunication/resources/iriscontrols_modbus_params.png \
+                         Tutorials/09_HighSpeedCommunication/resources/iriscontrols_modbus_updated_params.png
 
 # The INPUT_FILTER tag can be used to specify a program that Doxygen should
 # invoke to filter for each input file. Doxygen will invoke the filter program
@@ -1439,7 +1443,10 @@ HTML_EXTRA_STYLESHEET  =
 # files will be copied as-is; there are no commands or markers available.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_FILES       =
+HTML_EXTRA_FILES       = Tutorials/09_HighSpeedCommunication/resources/iriscontrols_comm_rate.png \
+                         Tutorials/09_HighSpeedCommunication/resources/iriscontrols_dropdown.png \
+                         Tutorials/09_HighSpeedCommunication/resources/iriscontrols_modbus_params.png \
+                         Tutorials/09_HighSpeedCommunication/resources/iriscontrols_modbus_updated_params.png
 
 # The HTML_COLORSTYLE tag can be used to specify if the generated HTML output
 # should be rendered with a dark or light theme.

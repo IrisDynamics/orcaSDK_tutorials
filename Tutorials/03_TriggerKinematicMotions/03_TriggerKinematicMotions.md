@@ -2,6 +2,8 @@
 
 In this tutorial we will set up an app that sets up and periodically triggers a small set of kinematic motions.
 
+---
+
 We begin with the source code from tutorial 1:
 
 ```./main.cpp

@@ -5,7 +5,7 @@ In this tutorial we will set up a basic app that outputs position data from a mo
 ## Prerequisites
  - [Tutorial 04 - Error Handling](../04_ErrorHandling/04_ErrorHandling.md)
   
-## 
+---
 
 We begin with the source code from tutorial 1:
 

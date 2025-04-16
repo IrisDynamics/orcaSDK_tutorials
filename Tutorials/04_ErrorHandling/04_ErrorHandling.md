@@ -2,6 +2,8 @@
 
 In this tutorial we will learn about the system that the SDK uses to report errors that occur.
 
+---
+
 We'll start with a stripped down version of tutorial 1:
 
 ```./main.cpp
