@@ -8,7 +8,7 @@ After giving a force command to the motor, we'll update the code to swap what di
  - [Tutorial 03 - TriggerKinematicMotions](../03_TriggerKinematicMotions/03_TriggerKinematicMotions.md)
  - [Tutorial 06 - CommandStream](../06_CommandStream/06_CommandStream.md)
   
-## 
+---
 
 We start with the source code from the command stream tutorial, except for a small change. Instead of reading the position value from the stream cache, we'll print out the force value from the stream cache.
 

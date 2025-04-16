@@ -2,6 +2,8 @@
 
 In this tutorial we will set up the most basic app that demonstrates communication with your Orca motor. The end goal of this tutorial is an application which reads and displays the sensed position of a connected Orca motor.
 
+---
+
 ## The Source Code
 
 To begin let's start with the source file that we used but didn't explain back in the orcaSDK's README.md
