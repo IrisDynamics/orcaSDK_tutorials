@@ -31,7 +31,7 @@ int main() {
 		0,		//Oscillator ID (0 or 1)
 		20,		//Oscillator max force (newtons)
 		10,		//Frequency (decihertz),
-		0,		//Duty cycle (unimportant for sin wave1)
+		0,		//Duty cycle (not used in sine wave)
 		Actuator::OscillatorType::Sine
 	);
 
