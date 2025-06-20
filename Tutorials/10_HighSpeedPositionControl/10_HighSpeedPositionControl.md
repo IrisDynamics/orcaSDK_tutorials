@@ -1,4 +1,4 @@
-# 09 - High Speed Position Control
+# 10 - High Speed Position Control
 
 High speed communication is beneficial when real-time feedback or smooth motion is critical, and when large volumes of data need to be streamed from the motor. This tutorial illustrates an application of high speed communication using position control, which outputs a sine wave. 
 
@@ -25,7 +25,7 @@ int main() {
 
 	motor.open_serial_port(serial_port, 1000000, 80);
 
-    motor.enable_stream();
+	motor.enable_stream();
 	
 	while (true)
 	{
@@ -45,17 +45,14 @@ We will be outputting a sine wave using position mode, by streaming data to and 
 First, set the motor to sleep mode. This will reset any errors, if encountered, during the motor's last run. We will set this after opening the serial port and setting the communication rate. 
 
 ``` ./main.cpp
-	...
 	motor.open_serial_port(serial_port, 1000000, 80);
 
 	motor.set_mode(MotorMode::SleepMode);     
-	...
 ```
 
 Next, set the motor to position mode and declare a timer object, this will be used as part of the calculation which sets the movement interval of the sine wave.
 
 ``` ./main.cpp
-	...
 	motor.set_mode(MotorMode::SleepMode); 
 
 	motor.enable_stream();
@@ -63,7 +60,6 @@ Next, set the motor to position mode and declare a timer object, this will be us
 	motor.set_mode(MotorMode::PositionMode);
 
 	Timer sine_wave_timer;    
-	...
 ```
 
 ## Creating a Sine Wave
@@ -77,7 +73,6 @@ The constants used in this function are added below the file imports.
 If using Visual Studio, the beginning of your main file will look like:
 
 ``` ./main.cpp
-	...
 	#define _USE_MATH_DEFINES
 	#include <iostream>
 	#include "actuator.h"
@@ -96,7 +91,6 @@ If using Visual Studio, the beginning of your main file will look like:
 		double position_target = (amplitude * sin(two_pi_ft)) + sine_offset;
 		return static_cast<int>(position_target);
 	} 
-	...
 ```
 
 ## Streaming Positions to the Motor
@@ -106,7 +100,6 @@ As in [Tutorial 06 - Command Stream](../06_CommandStream/06_CommandStream.md), w
 In our while loop, we will track seconds using our timer and call our `get_sine_target()` function, passing in the current time in seconds. We can also log the motor's current position to the console.
 
 ``` ./main.cpp
-	...
 	while (true) {
 
 		motor.run();
@@ -117,7 +110,6 @@ In our while loop, we will track seconds using our timer and call our `get_sine_
 
 		std::cout << "Current Position: " << motor.stream_cache.position << "		\r"; 
 	}
-	...
 ```
 
 ## Viewing Position Output using IrisControls
