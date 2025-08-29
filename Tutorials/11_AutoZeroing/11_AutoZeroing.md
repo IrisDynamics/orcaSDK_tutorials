@@ -105,6 +105,9 @@ To determine if Auto Zeroing has finished:
 ```./main.cpp
     ...
     while (true) {
+        ...
+        const int auto_zero_error = 8192;
+        ...
         auto error_check = motor.get_errors();
 
         if (error_check.value & auto_zero_error) {
