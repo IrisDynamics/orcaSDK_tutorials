@@ -1,4 +1,4 @@
-# 04 - Error Handling
+# Error Handling
 
 In this tutorial we will learn about the system that the SDK uses to report errors that occur.
 

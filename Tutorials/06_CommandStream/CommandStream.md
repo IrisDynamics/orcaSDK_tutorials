@@ -1,4 +1,5 @@
-# 06 - Command Stream
+# Command Stream
+
 In this tutorial we introduce an important concept when using Orca motors through the SDK, the Command Stream. Command streaming is the SDK's main form of asynchronous communication with the motor. It allows for sending commands to the motor while simultaneously reading commonly used data. It is also required in order to use some features of the motor. For more details see the Orca Series Modbus RTU User Guide pdf available through our [Downloads](https://irisdynamics.com/downloads) page.
   
 ---
