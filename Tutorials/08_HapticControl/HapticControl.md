@@ -1,15 +1,15 @@
-# 08 - Haptic Control
+# Haptic Control
 
 In this tutorial we will demonstrate use of the haptics mode of Orca motors through the SDK. 
 
 In this tutorial we will set up the motor to apply a spring effect, while also applying an additional oscillating force using a sin wave.
 
 ## Prerequisites
- - [Tutorial 07 - ForceControl](../07_ForceControl/07_ForceControl.md)
+ - [ForceControl](../07_ForceControl/ForceControl.md)
   
 ---
 
-We'll start with a subset of the code from the [Force Control](../07_ForceControl/07_ForceControl.md) tutorial, once again edited to display the actively commanded force rather than the position.
+We'll start with a subset of the code from the [Force Control](../07_ForceControl/ForceControl.md) tutorial, once again edited to display the actively commanded force rather than the position.
 
 ```./main.cpp
 #include <iostream>

@@ -1,12 +1,12 @@
-# 07 - Force Control
+# Force Control
 
 In this tutorial we will demonstrate use of the force control mode of Orca motors. 
 
 After giving a force command to the motor, we'll update the code to swap what direction the force is applied periodically.
 
 ## Prerequisites
- - [Tutorial 03 - TriggerKinematicMotions](../03_TriggerKinematicMotions/03_TriggerKinematicMotions.md)
- - [Tutorial 06 - CommandStream](../06_CommandStream/06_CommandStream.md)
+ - [TriggerKinematicMotions](../03_TriggerKinematicMotions/TriggerKinematicMotions.md)
+ - [CommandStream](../06_CommandStream/CommandStream.md)
   
 ---
 

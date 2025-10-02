@@ -966,15 +966,15 @@ WARN_LOGFILE           =
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  = C:/Users/AidenBull/Documents/orcaSDK_tutorials/README.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/01_HelloWorld_ReadPosition/01_HelloWorld_ReadPosition.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/02_ReadOrcaMode/02_ReadOrcaMode.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/03_TriggerKinematicMotions/03_TriggerKinematicMotions.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/04_ErrorHandling/04_ErrorHandling.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/05_LogPosition/05_LogPosition.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/06_CommandStream/06_CommandStream.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/07_ForceControl/07_ForceControl.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/08_HapticControl/08_HapticControl.md \
-                         Tutorials/09_HighSpeedCommunication/09_HighSpeedCommunication.md
+                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/01_HelloWorld_ReadPosition/HelloWorld_ReadPosition.md \
+                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/02_ReadOrcaMode/ReadOrcaMode.md \
+                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/03_TriggerKinematicMotions/TriggerKinematicMotions.md \
+                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/04_ErrorHandling/ErrorHandling.md \
+                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/05_LogPosition/LogPosition.md \
+                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/06_CommandStream/CommandStream.md \
+                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/07_ForceControl/ForceControl.md \
+                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/08_HapticControl/HapticControl.md \
+                         Tutorials/09_HighSpeedCommunication/HighSpeedCommunication.md
 
 # This tag can be used to specify the character encoding of the source files
 # that Doxygen parses. Internally Doxygen uses the UTF-8 encoding. Doxygen uses

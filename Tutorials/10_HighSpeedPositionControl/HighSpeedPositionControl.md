@@ -1,10 +1,10 @@
-# 10 - High Speed Position Control
+# High Speed Position Control
 
 High speed communication is beneficial when real-time feedback or smooth motion is critical, and when large volumes of data need to be streamed from the motor. This tutorial illustrates an application of high speed communication using position control, which outputs a sine wave. 
 
 ## Prerequisites
- - [Tutorial 06 - Command Stream](../06_CommandStream/06_CommandStream.md)
- - [Tutorial 09 - High Speed Communication](../09_HighSpeedCommunication/09_HighSpeedCommunication.md)
+ - [Command Stream](../06_CommandStream/CommandStream.md)
+ - [High Speed Communication](../09_HighSpeedCommunication/HighSpeedCommunication.md)
   
   
 ---

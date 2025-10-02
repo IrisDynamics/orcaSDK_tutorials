@@ -1,4 +1,4 @@
-# 09 - High Speed Communication
+# High Speed Communication
 
 In this tutorial, we will show how to configure your Orca motor and your code in order to achieve high communication rates.
   

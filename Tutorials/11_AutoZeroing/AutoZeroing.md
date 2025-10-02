@@ -1,4 +1,4 @@
-# 11 - Auto Zeroing
+# Auto Zeroing
 
 Auto Zero Mode puts the motor into a routine that brings the shaft to its fully retracted position until it reaches a hard stop, then sets the zero position to that location. After completing zeroing, the motor will move into the specified Exit Mode. 
 

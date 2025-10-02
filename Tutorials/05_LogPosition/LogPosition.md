@@ -1,9 +1,9 @@
-# 05 - Log Position
+# Log Position
 
 In this tutorial we will set up a basic app that outputs position data from a motor to a log file.
 
 ## Prerequisites
- - [Tutorial 04 - Error Handling](../04_ErrorHandling/04_ErrorHandling.md)
+ - [Error Handling](../04_ErrorHandling/ErrorHandling.md)
   
 ---
 
