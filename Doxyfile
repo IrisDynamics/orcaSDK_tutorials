@@ -965,16 +965,18 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = C:/Users/AidenBull/Documents/orcaSDK_tutorials/README.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/01_HelloWorld_ReadPosition/HelloWorld_ReadPosition.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/02_ReadOrcaMode/ReadOrcaMode.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/03_TriggerKinematicMotions/TriggerKinematicMotions.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/04_ErrorHandling/ErrorHandling.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/05_LogPosition/LogPosition.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/06_CommandStream/CommandStream.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/07_ForceControl/ForceControl.md \
-                         C:/Users/AidenBull/Documents/orcaSDK_tutorials/Tutorials/08_HapticControl/HapticControl.md \
-                         Tutorials/09_HighSpeedCommunication/HighSpeedCommunication.md
+INPUT                  = README.md \
+                         Tutorials/01_HelloWorld_ReadPosition/HelloWorld_ReadPosition.md \
+                         Tutorials/02_ReadOrcaMode/ReadOrcaMode.md \
+                         Tutorials/03_TriggerKinematicMotions/TriggerKinematicMotions.md \
+                         Tutorials/04_ErrorHandling/ErrorHandling.md \
+                         Tutorials/05_LogPosition/LogPosition.md \
+                         Tutorials/06_CommandStream/CommandStream.md \
+                         Tutorials/07_ForceControl/ForceControl.md \
+                         Tutorials/08_HapticControl/HapticControl.md \
+                         Tutorials/09_HighSpeedCommunication/HighSpeedCommunication.md \
+                         Tutorials/10_HighSpeedPositionControl/HighSpeedPositionControl.md \
+                         Tutorials/11_AutoZeroing/AutoZeroing.md
 
 # This tag can be used to specify the character encoding of the source files
 # that Doxygen parses. Internally Doxygen uses the UTF-8 encoding. Doxygen uses
