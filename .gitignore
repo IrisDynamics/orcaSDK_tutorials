@@ -1,10 +1,9 @@
 venv/
 .vscode/
 
+out/
 
 */build/*
-
-*/out/*
 
 html/*
 
