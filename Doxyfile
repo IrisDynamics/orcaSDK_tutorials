@@ -970,13 +970,13 @@ INPUT                  = README.md \
                          Tutorials/02_ReadOrcaMode/ReadOrcaMode.md \
                          Tutorials/03_TriggerKinematicMotions/TriggerKinematicMotions.md \
                          Tutorials/04_ErrorHandling/ErrorHandling.md \
-                         Tutorials/05_LogPosition/LogPosition.md \
-                         Tutorials/06_CommandStream/CommandStream.md \
-                         Tutorials/07_ForceControl/ForceControl.md \
-                         Tutorials/08_HapticControl/HapticControl.md \
-                         Tutorials/09_HighSpeedCommunication/HighSpeedCommunication.md \
-                         Tutorials/10_HighSpeedPositionControl/HighSpeedPositionControl.md \
-                         Tutorials/11_AutoZeroing/AutoZeroing.md
+                         Tutorials/06_LogPosition/LogPosition.md \
+                         Tutorials/07_CommandStream/CommandStream.md \
+                         Tutorials/08_ForceControl/ForceControl.md \
+                         Tutorials/09_HapticControl/HapticControl.md \
+                         Tutorials/10_HighSpeedCommunication/HighSpeedCommunication.md \
+                         Tutorials/11_HighSpeedPositionControl/HighSpeedPositionControl.md \
+                         Tutorials/12_AutoZeroing/AutoZeroing.md
 
 # This tag can be used to specify the character encoding of the source files
 # that Doxygen parses. Internally Doxygen uses the UTF-8 encoding. Doxygen uses

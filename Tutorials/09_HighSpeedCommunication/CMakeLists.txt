@@ -1,6 +1,0 @@
-add_executable(09_HighSpeedCommunication
-	main.cpp
-)
-
-target_link_libraries(09_HighSpeedCommunication PRIVATE orcaSDK::core)
-target_link_libraries(09_HighSpeedCommunication PRIVATE tutorialHelpers)

@@ -1,6 +1,0 @@
-add_executable(10_HighSpeedPositionControl
-	main.cpp
-)
-
-target_link_libraries(10_HighSpeedPositionControl PRIVATE orcaSDK::core)
-target_link_libraries(10_HighSpeedPositionControl PRIVATE tutorialHelpers)
