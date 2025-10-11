@@ -1,4 +1,5 @@
 from pyorcasdk import Actuator
+import sys
 
 motor = Actuator( "MyMotorName" )
 
@@ -8,6 +9,7 @@ serial_port_error = motor.open_serial_port(serial_port)
 
 if serial_port_error:
     print("Error Detected! Message: " + serial_port_error.what())
+    sys.exit(1)
 else:
     print("Serial Port Opened Successfully")
 
