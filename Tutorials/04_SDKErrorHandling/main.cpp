@@ -14,6 +14,7 @@ int main() {
 	if (serial_port_error)
 	{
 		std::cout << "Error Detected! Message: " << serial_port_error.what() << "\n";
+		return 1;
 	}
 	else
 	{
