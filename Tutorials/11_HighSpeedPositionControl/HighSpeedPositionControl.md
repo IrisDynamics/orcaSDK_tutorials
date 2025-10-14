@@ -118,4 +118,4 @@ With our program running, after connecting to IrisControls using the COM port as
 
 The `sine_offset`, `amplitude`, and `frequency` variables can be adjusted to modify the waveform as needed for your application.
 
-![Sine Wave in IrisControls](./resources/iriscontrols_sine_wave.png)
+![Sine Wave in IrisControls](iriscontrols_sine_wave.png)
