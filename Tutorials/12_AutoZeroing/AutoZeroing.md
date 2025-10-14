@@ -4,7 +4,7 @@ Auto Zero Mode puts the motor into a routine that brings the shaft to its fully 
 
 Auto Zeroing can also be triggered through IrisControls, or automatically at startup by enabling the Auto Zero on Boot option. 
 
-![Auto Zeroing in IrisControls](./resources/iriscontrols_auto_zero.png)
+![Auto Zeroing in IrisControls](iriscontrols_auto_zero.png)
 
 Before configuring AutoZero, we will open the serial port and set the motor to Sleep Mode in case errors were encountered during the motor's last run.
 

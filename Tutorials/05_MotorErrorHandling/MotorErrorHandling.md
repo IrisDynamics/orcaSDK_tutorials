@@ -14,7 +14,7 @@ Motor errors here refers to errors that an ORCA motor detects internally. They c
 
 These errors can be seen in the IrisControls GUI in the "Active Errors" field found in the status bar at the top of the window. When an error is active the value of this field will be a bright red. 
 
-![voltage error](resources/active_voltage_error.png "IrisControls displaying a 1024 error (Supply Voltage Invalid)")
+![voltage error](active_voltage_error.png "IrisControls displaying a 1024 error (Supply Voltage Invalid)")
 
 This image shows a motor thats displaying a 1024 error. Upon reading the reference manual (or clicking the question mark button) we can determine that this error is reporting an invalid supply voltage. Indeed if we look at our "Voltage" field in the same status bar, we can see that our motor is detecting 1.48 volts, which is below the necessary supply voltage for operating an ORCA motor.
 
@@ -67,7 +67,7 @@ Give this code a try! Try running this program with the motor connected to an ac
 
 There are multiple errors that your motor might encounter, and some of these errors may be encountered simultaneously. However, calling `Actuator::get_errors()` only returns one value. Each individual error is reported by a single bit/flag within the active errors register. As an example, this is what the error value would be if you were encountering both a 1024 (invalid voltage) and 512 (poor shaft quality) error at the same time:
 
-![both voltage and shaft quality error](resources/invalid_voltage_and_poor_shaft_quality.png "IrisControls displaying both a 1024 error (Supply Voltage Invalid) and a 512 error (Low Shaft Quality)")
+![both voltage and shaft quality error](invalid_voltage_and_poor_shaft_quality.png "IrisControls displaying both a 1024 error (Supply Voltage Invalid) and a 512 error (Low Shaft Quality)")
 
 If our code needs to detect when our motor has encountered an invalid supply voltage error but another error was present, then simply comparing the `Actuator::get_errors()` return value to the error we're interested in (1024) could fail. Because each error is reported using a single bit, extracting a specific error can be achieved by performing a bitwise AND on the error value with the error bit that you're interested in.
 

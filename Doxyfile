@@ -969,7 +969,8 @@ INPUT                  = README.md \
                          Tutorials/01_HelloWorld_ReadPosition/HelloWorld_ReadPosition.md \
                          Tutorials/02_ReadOrcaMode/ReadOrcaMode.md \
                          Tutorials/03_TriggerKinematicMotions/TriggerKinematicMotions.md \
-                         Tutorials/04_ErrorHandling/ErrorHandling.md \
+                         Tutorials/04_SDKErrorHandling/SDKErrorHandling.md \
+                         Tutorials/05_MotorErrorHandling/MotorErrorHandling.md \
                          Tutorials/06_LogPosition/LogPosition.md \
                          Tutorials/07_CommandStream/CommandStream.md \
                          Tutorials/08_ForceControl/ForceControl.md \
