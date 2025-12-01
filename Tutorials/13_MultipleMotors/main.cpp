@@ -35,10 +35,13 @@ int main() {
     }
 
     while (true) {
-        motors[0].run();  // Adds stream command if there is not outgoing data
 
-        std::cout << "\nCurrent Position: " << motors[0].get_stream_cache.position
+        for (int i = 0; i < NUM_MOTORS; i++) {
+            motors[i].run();
+
+            std::cout << "\nMotor " [i] << "Current Position: " << motors[i].get_stream_cache.position
             << "     \r";
+        }
     }
     return 0;
 }

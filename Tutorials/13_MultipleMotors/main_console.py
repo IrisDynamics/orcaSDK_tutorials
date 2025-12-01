@@ -2,6 +2,9 @@ from pyorcasdk import Actuator, MotorMode
 from colorama import init, Fore
 
 
+KINEMATIC_STATUS = 319
+
+
 def digit_input(user_input):
     """
     Tests whether the entered input is a number, if not the attempted conversion raises a ValueError.
@@ -18,21 +21,35 @@ def configure_motions(motors):
     If this function is not used, the motor activates its saved motions.
     """
     for motor in motors:
-        motor.set_kinematic_motion(0, 50000, 1000, 0, 1)
-        motor.set_kinematic_motion(1, 10000, 1000, 0, 1)
+        motor.set_kinematic_motion(0, 50000, 1000, 0, 1, False)
+        motor.set_kinematic_motion(1, 10000, 1000, 0, 1, False)
 
 
 def trigger_motion(motors, motion_id):
     """
-    Activates Kinematic mode and triggers the chosen motion for multiple motors.
+    Activates Kinematic mode,
+    Triggers the chosen motion,
+    And reads the KINEMATIC_STATUS register to determine if the motion has finished for multiple motors.
+
+    The last bit of the kinematic status register indicates whether the motion has completed.
 
     Args:
         motors (Actuator): The connected ORCA motors.
         motion_id (int): The user's chosen motion_id.
     """
+    motion_complete = None
+
     for motor in motors:
         motor.set_mode(MotorMode.KinematicMode)
         motor.trigger_kinematic_motion(motion_id)
+
+    while motion_complete != 0:
+        for motor in motors:
+            kin_status = motor.read_register_blocking(KINEMATIC_STATUS).value
+            motion_complete = kin_status >> 15
+            if motion_complete == 0:
+                print("Motion Complete!")
+                break
 
 
 def sleep_orca(motors):
@@ -71,7 +88,8 @@ def main():
             else:
                 print(Fore.WHITE + f"Motor {i + 1} connected successfully! \n")
 
-        # A call to configure_motions(motors) can be included here
+        # This is optional, but can be used to configure motor parameters
+        configure_motions(motors)
 
         menu = [
             "\n   COMMAND   | DESCRIPTION",
@@ -93,11 +111,6 @@ def main():
             match active_motion:
                 case int() if 0 <= active_motion <= 32:
                     trigger_motion(motors, active_motion)
-                case "o":
-                    motion_id = int(
-                        input(Fore.GREEN + "Enter motion ID of the motion to trigger: ")
-                    )
-                    trigger_motion(motors, motion_id)
                 case "s":
                     sleep_orca(motors)
                 case "q":
