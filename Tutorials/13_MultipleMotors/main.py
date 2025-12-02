@@ -1,8 +1,8 @@
 from pyorcasdk import Actuator, MotorMode
-from colorama import init, Fore
 
 
 KINEMATIC_STATUS = 319
+NUM_ORCAS = 2
 
 
 def digit_input(user_input):
@@ -15,29 +15,18 @@ def digit_input(user_input):
     return int(user_input)
 
 
-def configure_motions(motors):
-    """
-    This function can be used to configure motions one and two.
-    If this function is not used, the motor activates its saved motions.
-    """
-    for motor in motors:
-        motor.set_kinematic_motion(0, 50000, 1000, 0, 1, False)
-        motor.set_kinematic_motion(1, 10000, 1000, 0, 1, False)
-
-
 def trigger_motion(motors, motion_id):
     """
     Activates Kinematic mode,
     Triggers the chosen motion,
     And reads the KINEMATIC_STATUS register to determine if the motion has finished for multiple motors.
 
-    The last bit of the kinematic status register indicates whether the motion has completed.
-
     Args:
         motors (Actuator): The connected ORCA motors.
         motion_id (int): The user's chosen motion_id.
     """
     motion_complete = None
+    motions_complete = 0
 
     for motor in motors:
         motor.set_mode(MotorMode.KinematicMode)
@@ -46,12 +35,14 @@ def trigger_motion(motors, motion_id):
     while motion_complete != 0:
         for motor in motors:
             kin_status = motor.read_register_blocking(KINEMATIC_STATUS).value
-            motion = motor.read_register_blocking(KINEMATIC_STATUS).value
+            # the last bit of this register indicates whether the motion has completed
             motion_complete = kin_status >> 15
-            motion_number = kin_status & 15
+            # AND with 0b011111111111111 determines the active motion
+            motion_number = kin_status & 0x7FFF
             if motion_complete == 0:
-                print(f"Motion {motion_number} Complete!")
-                break
+                motions_complete += 1
+                if motions_complete == NUM_ORCAS:
+                    print(f"Motion {motion_number} Complete!")
 
 
 def sleep_orca(motors):
@@ -63,38 +54,28 @@ def sleep_orca(motors):
 
 
 def main():
-    init()  # for colorama
     active_motion = None
 
     try:
-        num_orcas = digit_input(
-            input(Fore.GREEN + "How many motors would you like to test?: ")
-        )
-
-        motors = [Actuator(f"ORCA{i + 1}") for i in range(num_orcas)]
+        motors = [Actuator(f"ORCA{i + 1}") for i in range(NUM_ORCAS)]
 
         print(
-            Fore.WHITE + f"Testing {num_orcas} ORCAs\n"
-            if num_orcas > 1
-            else f"Testing {num_orcas} ORCA\n"
+            f"\nTesting {NUM_ORCAS} ORCAs\n"
+            if NUM_ORCAS > 1
+            else f"\nTesting {NUM_ORCAS} ORCA\n"
         )
 
-        for i in range(num_orcas):
-            com_port = digit_input(
-                input(Fore.GREEN + f"COM port (RS422) for ORCA {i + 1}: ")
-            )
+        for i in range(NUM_ORCAS):
+            com_port = digit_input(input(f"COM port (RS422) for ORCA {i + 1}: "))
             error = motors[i].open_serial_port(com_port)
 
             if error:
-                print(Fore.WHITE + f"Error: {error.what()} \n")
+                print(f"Error: {error.what()} \n")
             else:
-                print(Fore.WHITE + f"Motor {i + 1} connected successfully! \n")
-
-        # This is optional, but can be used to configure motor parameters
-        configure_motions(motors)
+                print(f"Motor {i + 1} connected successfully! \n")
 
         menu = [
-            "\n   COMMAND   | DESCRIPTION",
+            "\n   INPUT    | DESCRIPTION",
             "   ----------------------------------",
             "   0 - 32    | Motion ID to activate",
             "   s         | Sleep ORCAs",
@@ -103,7 +84,7 @@ def main():
         print("\n".join(menu))
 
         while True:
-            active_motion = input(Fore.GREEN + "\n>> Enter command: ")
+            active_motion = input("\n>> Enter input: ")
 
             try:
                 active_motion = digit_input(active_motion)
