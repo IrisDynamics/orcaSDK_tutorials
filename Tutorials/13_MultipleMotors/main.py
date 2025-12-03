@@ -5,16 +5,6 @@ KINEMATIC_STATUS = 319
 NUM_ORCAS = 2
 
 
-def digit_input(user_input):
-    """
-    Tests whether the entered input is a number, if not the attempted conversion raises a ValueError.
-
-    Args:
-        user_input: The input entered by the user.
-    """
-    return int(user_input)
-
-
 def trigger_motion(motors, motion_id):
     """
     Activates Kinematic mode,
@@ -26,24 +16,29 @@ def trigger_motion(motors, motion_id):
         motion_id (int): The user's chosen motion_id.
     """
     motion_complete = None
-    motions_complete = 0
+    check_complete_motions = [False, False]
 
     for motor in motors:
+        motor.trigger_kinematic_motion(0)
         motor.set_mode(MotorMode.KinematicMode)
         motor.trigger_kinematic_motion(motion_id)
 
-    while motion_complete != 0:
-        for motor in motors:
+    while all(check_complete_motions) != True:
+        for index, motor in enumerate(motors):
             kin_status = motor.read_register_blocking(KINEMATIC_STATUS).value
             # the last bit of this register indicates whether the motion has completed
             motion_complete = kin_status >> 15
             # AND with 0b011111111111111 determines the active motion
             motion_number = kin_status & 0x7FFF
-            if motion_complete == 0:
-                motions_complete += 1
-                if motions_complete == NUM_ORCAS:
-                    print(f"Motion {motion_number} Complete!")
+            if index == 0 and motion_complete == 0:
+                check_complete_motions[0] = True
+                print(f"Motor {index} Motion {motion_number} Complete!")
+            elif index == 1 and motion_complete == 0:
+                check_complete_motions[1] = True
+                print(f"Motor {index} Motion {motion_number} Complete!")
 
+            if all(check_complete_motions):
+                print(f"All motions complete!")
 
 def sleep_orca(motors):
     """
@@ -66,7 +61,7 @@ def main():
         )
 
         for i in range(NUM_ORCAS):
-            com_port = digit_input(input(f"COM port (RS422) for ORCA {i + 1}: "))
+            com_port = int(input(f"COM port (RS422) for ORCA {i + 1}: "))
             error = motors[i].open_serial_port(com_port)
 
             if error:
@@ -87,7 +82,7 @@ def main():
             active_motion = input("\n>> Enter input: ")
 
             try:
-                active_motion = digit_input(active_motion)
+                active_motion = int(active_motion)
             except ValueError:
                 active_motion = active_motion.lower()
 
