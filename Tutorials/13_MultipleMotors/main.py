@@ -15,30 +15,27 @@ def trigger_motion(motors, motion_id):
         motors (Actuator): The connected ORCA motors.
         motion_id (int): The user's chosen motion_id.
     """
-    motion_complete = None
-    check_complete_motions = [False, False]
+    motions_completed = [False, False]
+    printed_complete = [False, False]
 
     for motor in motors:
         motor.trigger_kinematic_motion(0)
         motor.set_mode(MotorMode.KinematicMode)
         motor.trigger_kinematic_motion(motion_id)
 
-    while all(check_complete_motions) != True:
+    while all(motions_completed) != True:
         for index, motor in enumerate(motors):
             kin_status = motor.read_register_blocking(KINEMATIC_STATUS).value
-            # the last bit of this register indicates whether the motion has completed
-            motion_complete = kin_status >> 15
-            # AND with 0b011111111111111 determines the active motion
-            motion_number = kin_status & 0x7FFF
-            if index == 0 and motion_complete == 0:
-                check_complete_motions[0] = True
-                print(f"Motor {index} Motion {motion_number} Complete!")
-            elif index == 1 and motion_complete == 0:
-                check_complete_motions[1] = True
-                print(f"Motor {index} Motion {motion_number} Complete!")
 
-            if all(check_complete_motions):
-                print(f"All motions complete!")
+            motion_complete = kin_status >> 15
+            motion_number = kin_status & 0x7FFF
+
+            if motion_complete == 0:
+                motions_completed[index] = True
+
+                if not printed_complete[index]:
+                    print(f"Motor {index} Motion {motion_number} Complete!")
+                    printed_complete[index] = True
 
 def sleep_orca(motors):
     """
