@@ -29,20 +29,7 @@ Before configuring AutoZero, we will open the serial port and set the motor to S
 
 ```./main.cpp
     ...
-    const int auto_zero_enabled = 2;
-    ...
-    motor.write_register_blocking(ZERO_MODE, auto_zero_enabled);
-    ...
-```
-
-Note: If you are working in Python, the registers will require manual definitions as shown below: 
-
-```./main.py
-    ...
-    ZERO_MODE = 171
-    ZERO_MODE_ENABLED = 2
-    ...
-    motor.write_register_blocking(ZERO_MODE, ZERO_MODE_ENABLED)
+    motor.write_register_blocking(ORCAReg::ZERO_MODE, ORCAReg::ZERO_MODE_Values::AUTO_ZERO_ENABLED);
     ...
 ```
 
@@ -54,7 +41,7 @@ Note: If you are working in Python, the registers will require manual definition
     ...
     const int force_newtons = 30;
     ...
-    motor.write_register_blocking(AUTO_ZERO_FORCE_N, force_newtons);
+    motor.write_register_blocking(ORCAReg::AUTO_ZERO_FORCE_N, force_newtons);
     ...
 ```
 
@@ -66,7 +53,7 @@ Note: If you are working in Python, the registers will require manual definition
     ...
     const int speed_mm_per_sec = 50;
     ...
-    motor.write_register_blocking(AUTO_ZERO_SPEED_MMPS, speed_mm_per_sec);
+    motor.write_register_blocking(ORCAReg::AUTO_ZERO_SPEED_MMPS, speed_mm_per_sec);
     ...
 ```
 
@@ -82,7 +69,7 @@ Note: If you are working in Python, the registers will require manual definition
 
 ```./main.cpp
     ...
-    motor.write_register_blocking(AUTO_ZERO_EXIT_MODE, MotorMode::SleepMode);
+    motor.write_register_blocking(ORCAReg::AUTO_ZERO_EXIT_MODE, MotorMode::SleepMode);
     ...
 ```
 
@@ -98,19 +85,17 @@ Note: If you are working in Python, the registers will require manual definition
 
 ### Determining Auto Zeroing is Finished
 
-To determine if Auto Zeroing has finished:
-- We can check for a change of the motor's mode. 
-- If an error with value of 8192 is returned, Auto Zeroing has failed.
+To determine if Auto Zeroing has finished, we check for two things:
+- If the motor's mode has changed, auto zero has completed successfully. 
+- If an 'auto zero failed' error (value 8192) has occurred, Auto Zeroing has failed.
 
 ```./main.cpp
     ...
     while (true) {
-        ...
-        const int auto_zero_error = 8192;
-        ...
         auto error_check = motor.get_errors();
 
-        if (error_check.value & auto_zero_error) {
+        // ORCAReg::ERROR_0_Values::AUTO_ZERO_FAILED_Mask is just an integer with value 8192
+        if (error_check.value & ORCAReg::ERROR_0_Values::AUTO_ZERO_FAILED_Mask) {
             std::cout << "\nAuto Zeroing Failed." << std::endl;
             return 0;
         }
@@ -121,7 +106,7 @@ To determine if Auto Zeroing has finished:
     }
 ```
 
-Note: Successful Auto Zeroing may require a shaft collar to help provide a hard stop.
+Note: Successful Auto Zeroing may require a shaft collar to provide a hard stop.
 
 See the [ORCA Motors Reference Manual](https://irisdynamics.com/hubfs/Website/Downloads/Orca/Approved/RM220115_Orca_Series_Reference_Manual.pdf?hsCtaTracking=e63573b5-0822-49c6-ab51-8fd19e3dbc2c%7C02512cb7-0bf7-4398-bf2e-2b2ceb8a6bab) on page(s) 43-45 for further information regarding Auto Zero configuration and settings.
     

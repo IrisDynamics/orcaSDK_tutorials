@@ -4,21 +4,19 @@
 
 using namespace orcaSDK;
 
-const int auto_zero_error = 8192;
-const int auto_zero_enabled = 2;
-const int force_newtons = 30;
-const int speed_mm_per_sec = 50;
+constexpr int force_newtons = 30;
+constexpr int speed_mm_per_sec = 50;
 
 void auto_zero_motor(Actuator motor)
 {
     // zero mode - 2: auto zero enabled
-    motor.write_register_blocking(ZERO_MODE, auto_zero_enabled);
+    motor.write_register_blocking(ORCAReg::ZERO_MODE, ORCAReg::ZERO_MODE_Values::AUTO_ZERO_ENABLED);
     // at most 30 N of force is applied to move the motor
-    motor.write_register_blocking(AUTO_ZERO_FORCE_N, force_newtons);
+    motor.write_register_blocking(ORCAReg::AUTO_ZERO_FORCE_N, force_newtons);
     // shaft speed moves up to 50 mmps while completing auto zeroing
-    motor.write_register_blocking(AUTO_ZERO_SPEED_MMPS, speed_mm_per_sec);
+    motor.write_register_blocking(ORCAReg::AUTO_ZERO_SPEED_MMPS, speed_mm_per_sec);
     // motor will sleep after completing auto zeroing
-    motor.write_register_blocking(AUTO_ZERO_EXIT_MODE, MotorMode::SleepMode);
+    motor.write_register_blocking(ORCAReg::AUTO_ZERO_EXIT_MODE, MotorMode::SleepMode);
 
     motor.set_mode(MotorMode::AutoZeroMode);
 }
@@ -37,7 +35,7 @@ int main() {
     while (true) {
         auto error_check = motor.get_errors();
 
-        if (error_check.value & auto_zero_error) {
+        if (error_check.value & ORCAReg::ERROR_0_Values::AUTO_ZERO_FAILED_Mask) {
             std::cout << "\nAuto Zeroing Failed." << std::endl;
             return 0;
         }

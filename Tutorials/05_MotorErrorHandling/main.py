@@ -1,4 +1,5 @@
 from pyorcasdk import Actuator
+import pyorcasdk.orca_registers as orca_reg
 import sys
 
 motor = Actuator( "MyMotorName" )
@@ -15,5 +16,5 @@ if motor_errors_result.error:
 
 print("Active motor errors: " + motor_errors_result.value)
 
-if (motor_errors_result.value & 1024):
+if (motor_errors_result.value & orca_reg.ERROR_0_VOLTAGE_INVALID_Mask):
     print("There is definitely an invalid supply voltage error!")

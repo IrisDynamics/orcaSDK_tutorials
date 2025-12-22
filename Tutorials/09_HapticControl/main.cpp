@@ -19,7 +19,7 @@ int main() {
 
 	motor.set_mode(MotorMode::HapticMode); //Switch to haptic mode
 
-	motor.update_haptic_stream_effects(Actuator::Osc0 + Actuator::Spring0);
+	motor.update_haptic_stream_effects(ORCAReg::HAPTIC_STATUS_Values::OSCILLATOR_0_Mask + ORCAReg::HAPTIC_STATUS_Values::SPRING_0_Mask);
 
 	motor.set_spring_effect( //Update spring parameters
 		0,		//Spring ID (0, 1, or 2)
@@ -32,7 +32,7 @@ int main() {
 		20,		//Oscillator max force (newtons)
 		10,		//Frequency (decihertz),
 		0,		//Duty cycle (not used in sine wave)
-		Actuator::OscillatorType::Sine
+		ORCAReg::On_TYPE_Values::SINE
 	);
 
 	while (true) {
