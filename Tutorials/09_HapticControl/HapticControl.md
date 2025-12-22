@@ -57,7 +57,7 @@ When streaming in haptic mode, Orca motors require that the client regularly str
 	...
 	motor.set_mode(MotorMode::HapticMode);
 
-	motor.update_haptic_stream_effects(Actuator::Spring0);
+	motor.update_haptic_stream_effects(ORCAReg::HAPTIC_STATUS_Values::SPRING_0_Mask);
 	...
 ```
 
@@ -69,7 +69,7 @@ Let's update the parameters of that spring effect to something that we desire.
 	...
 	motor.set_mode(MotorMode::HapticMode);
 
-	motor.update_haptic_stream_effects(Actuator::Spring0);
+	motor.update_haptic_stream_effects(ORCAReg::HAPTIC_STATUS_Values::SPRING_0_Mask);
 
 	motor.set_spring_effect(
 		0,		//Spring ID (0, 1, or 2)
@@ -88,7 +88,7 @@ Now let's update the code to add an oscillation effect. Haptics mode includes a 
 
 ```./main.cpp
 	...
-	motor.update_haptic_stream_effects(Actuator::Spring0 + Actuator::Osc0);
+	motor.update_haptic_stream_effects(ORCAReg::HAPTIC_STATUS_Values::SPRING_0_Mask + ORCAReg::HAPTIC_STATUS_Values::OSCILLATOR_0_Mask);
 	...
 ```
 
@@ -101,7 +101,7 @@ Now we should have both a spring and an oscillator active. Next, similar to the 
 		20,		//Oscillator max force (newtons)
 		10,		//Frequency (decihertz),
 		0,		//Duty cycle (unimportant for sin wave1)
-		Actuator::OscillatorType::Sine
+		ORCAReg::On_TYPE_Values::SINE
 	);
 	...
 ```

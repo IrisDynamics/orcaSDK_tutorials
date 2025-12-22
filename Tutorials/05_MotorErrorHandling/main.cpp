@@ -21,7 +21,7 @@ int main() {
 
 	std::cout << "Active motor errors: " << motor_errors_result.value << "\n";
 
-	if (motor_errors_result.value & 1024) std::cout << "There is definitely an invalid supply voltage error!" << "\n";
+	if (motor_errors_result.value & ORCAReg::ERROR_0_Values::VOLTAGE_INVALID_Mask) std::cout << "There is definitely an invalid supply voltage error!" << "\n";
 
 	return 0;
 }
