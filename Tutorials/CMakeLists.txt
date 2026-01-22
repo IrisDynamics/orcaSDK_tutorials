@@ -2,7 +2,12 @@ cmake_minimum_required(VERSION 3.20)
 
 project(orcaSDK_tutorials)
 
-find_package(orcaSDK REQUIRED)
+include(FetchContent)
+FetchContent_Declare(orcaSDK
+    GIT_REPOSITORY https://github.com/IrisDynamics/orcaSDK.git
+    GIT_TAG v1.1.0
+)
+FetchContent_MakeAvailable(orcaSDK)
 add_subdirectory(helpers)
 
 #Begin adding tutorials here
