@@ -1,12 +1,12 @@
 # Force Control
 
-In this tutorial we will demonstrate use of the force control mode of Orca motors. 
+In this tutorial we will demonstrate use of the force control mode of ORCA motors. 
 
 After giving a force command to the motor, we'll update the code to swap what direction the force is applied periodically.
 
 ## Prerequisites
- - [TriggerKinematicMotions](../03_TriggerKinematicMotions/TriggerKinematicMotions.md)
- - [CommandStream](../06_CommandStream/CommandStream.md)
+ - [TriggerKinematicMotions](../03_TriggerKinematicMotions/README.md)
+ - [CommandStream](../06_CommandStream/README.md)
   
 ---
 
@@ -65,7 +65,7 @@ At this point the motor is ready to receive force commands. Let's give it one.
 
 Try running the program, you should notice that the shaft moves. Also your console should be printing something close to the force you commanded. Try opening IrisControls. It should display that you are in force mode, and that it's detecting a force of around 10 newtons.
 
-Now close your program and run it again. This time you may notice that the shaft does not move. Take a look again at IrisControls. It should be displaying that an error has occurred, particularly a "comms timeout". Orca modes that are controlled via a command stream require that regular communication happens with the motor, else it will stop exerting force. This is a safety feature. When actively giving a motor commands, any stops in communication are interpreted as a failure or shutdown of the system at large.
+Now close your program and run it again. This time you may notice that the shaft does not move. Take a look again at IrisControls. It should be displaying that an error has occurred, particularly a "comms timeout". ORCA modes that are controlled via a command stream require that regular communication happens with the motor, else it will stop exerting force. This is a safety feature. When actively giving a motor commands, any stops in communication are interpreted as a failure or shutdown of the system at large.
 
 In order to resolve this issue, lets clear errors before beginning. This will allow the program to run again.
 
@@ -81,7 +81,7 @@ After adding this command in, your program should run as normal again.
 
 ## Swap Force Direction
 
-Now let's update the code to swap force direction periodically. We will do this using the Timer object again, similar to how we did during the [Kinematic Motion](../03_TriggerKinematicMotions/03_TriggerKinematicMotions.md) tutorial. A difference here is it will be set up so it expires immediately.
+Now let's update the code to swap force direction periodically. We will do this using the Timer object again, similar to how we did during the [Kinematic Motion](../03_TriggerKinematicMotions/README.md) tutorial. A difference here is it will be set up so it expires immediately.
 
 Let's set up the Timer object and make it reset itself every 5 seconds.
 

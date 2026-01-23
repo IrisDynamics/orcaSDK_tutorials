@@ -13,7 +13,7 @@ int main() {
 
 	motor.open_serial_port(serial_port);
 
-	motor.clear_errors(); // Orca motors raise an error when communication stops during haptics mode
+	motor.clear_errors(); // ORCA motors raise an error when communication stops during haptics mode
 
 	motor.enable_stream();
 

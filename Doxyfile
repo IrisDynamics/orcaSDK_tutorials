@@ -966,18 +966,18 @@ WARN_LOGFILE           =
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  = README.md \
-                         Tutorials/01_HelloWorld_ReadPosition/HelloWorld_ReadPosition.md \
-                         Tutorials/02_ReadOrcaMode/ReadOrcaMode.md \
-                         Tutorials/03_TriggerKinematicMotions/TriggerKinematicMotions.md \
-                         Tutorials/04_SDKErrorHandling/SDKErrorHandling.md \
-                         Tutorials/05_MotorErrorHandling/MotorErrorHandling.md \
-                         Tutorials/06_LogPosition/LogPosition.md \
-                         Tutorials/07_CommandStream/CommandStream.md \
-                         Tutorials/08_ForceControl/ForceControl.md \
-                         Tutorials/09_HapticControl/HapticControl.md \
-                         Tutorials/10_HighSpeedCommunication/HighSpeedCommunication.md \
-                         Tutorials/11_HighSpeedPositionControl/HighSpeedPositionControl.md \
-                         Tutorials/12_AutoZeroing/AutoZeroing.md
+                         Tutorials/01_HelloWorld_ReadPosition/README.md \
+                         Tutorials/02_ReadOrcaMode/README.md \
+                         Tutorials/03_TriggerKinematicMotions/README.md \
+                         Tutorials/04_SDKErrorHandling/README.md \
+                         Tutorials/05_MotorErrorHandling/README.md \
+                         Tutorials/06_LogPosition/README.md \
+                         Tutorials/07_CommandStream/README.md \
+                         Tutorials/08_ForceControl/README.md \
+                         Tutorials/09_HapticControl/README.md \
+                         Tutorials/10_HighSpeedCommunication/README.md \
+                         Tutorials/11_HighSpeedPositionControl/README.md \
+                         Tutorials/12_AutoZeroing/README.md
 
 # This tag can be used to specify the character encoding of the source files
 # that Doxygen parses. Internally Doxygen uses the UTF-8 encoding. Doxygen uses
