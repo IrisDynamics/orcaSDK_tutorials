@@ -2,7 +2,7 @@
 
 In this tutorial we will learn about the system that the SDK uses to report errors that occur. 
 
-The errors discussed in this tutorial are not to be confused with errors that are detected and reported by the motor. For information on those errors, see our [Motor Error Handling Tutorial](../05_MotorErrorHandling/MotorErrorHandling.md).
+The errors discussed in this tutorial are not to be confused with errors that are detected and reported by the motor. For information on those errors, see our [Motor Error Handling Tutorial](../05_MotorErrorHandling/README.md).
 
 ---
 

@@ -5,8 +5,8 @@ In this tutorial we will demonstrate use of the force control mode of Orca motor
 After giving a force command to the motor, we'll update the code to swap what direction the force is applied periodically.
 
 ## Prerequisites
- - [TriggerKinematicMotions](../03_TriggerKinematicMotions/TriggerKinematicMotions.md)
- - [CommandStream](../06_CommandStream/CommandStream.md)
+ - [TriggerKinematicMotions](../03_TriggerKinematicMotions/README.md)
+ - [CommandStream](../06_CommandStream/README.md)
   
 ---
 
@@ -81,7 +81,7 @@ After adding this command in, your program should run as normal again.
 
 ## Swap Force Direction
 
-Now let's update the code to swap force direction periodically. We will do this using the Timer object again, similar to how we did during the [Kinematic Motion](../03_TriggerKinematicMotions/03_TriggerKinematicMotions.md) tutorial. A difference here is it will be set up so it expires immediately.
+Now let's update the code to swap force direction periodically. We will do this using the Timer object again, similar to how we did during the [Kinematic Motion](../03_TriggerKinematicMotions/README.md) tutorial. A difference here is it will be set up so it expires immediately.
 
 Let's set up the Timer object and make it reset itself every 5 seconds.
 

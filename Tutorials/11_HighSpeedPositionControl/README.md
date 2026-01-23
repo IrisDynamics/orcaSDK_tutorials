@@ -3,8 +3,8 @@
 High speed communication is beneficial when real-time feedback or smooth motion is critical, and when large volumes of data need to be streamed from the motor. This tutorial illustrates an application of high speed communication using position control, which outputs a sine wave. 
 
 ## Prerequisites
- - [Command Stream](../06_CommandStream/CommandStream.md)
- - [High Speed Communication](../09_HighSpeedCommunication/HighSpeedCommunication.md)
+ - [Command Stream](../06_CommandStream/README.md)
+ - [High Speed Communication](../09_HighSpeedCommunication/README.md)
   
   
 ---
@@ -95,7 +95,7 @@ If using Visual Studio, the beginning of your main file will look like:
 
 ## Streaming Positions to the Motor
 
-As in [Tutorial 06 - Command Stream](../06_CommandStream/06_CommandStream.md), we will want to call `motor.run()` frequently as this sends asynchronous command stream messages to the motor, and checks to see if messages have yet to be resolved.
+As in [Tutorial 06 - Command Stream](../06_CommandStream/README.md), we will want to call `motor.run()` frequently as this sends asynchronous command stream messages to the motor, and checks to see if messages have yet to be resolved.
 
 In our while loop, we will track seconds using our timer and call our `get_sine_target()` function, passing in the current time in seconds. We can also log the motor's current position to the console.
 

@@ -3,7 +3,7 @@
 In this tutorial we will set up a basic app that outputs position data from a motor to a log file.
 
 ## Prerequisites
- - [SDK Error Handling](../04_SDKErrorHandling/SDKErrorHandling.md)
+ - [SDK Error Handling](../04_SDKErrorHandling/README.md)
   
 ---
 
