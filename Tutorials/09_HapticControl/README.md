@@ -1,6 +1,6 @@
 # Haptic Control
 
-In this tutorial we will demonstrate use of the haptics mode of Orca motors through the SDK. 
+In this tutorial we will demonstrate use of the haptics mode of ORCA motors through the SDK. 
 
 In this tutorial we will set up the motor to apply a spring effect, while also applying an additional oscillating force using a sin wave.
 
@@ -51,7 +51,7 @@ First let's update the call to set_mode(), so that we enter haptic mode instead.
 	...
 ```
 
-When streaming in haptic mode, Orca motors require that the client regularly stream the current haptic effects that should be active. For now, let's update that to only include a spring effect.
+When streaming in haptic mode, ORCA motors require that the client regularly stream the current haptic effects that should be active. For now, let's update that to only include a spring effect.
 
 ```./main.cpp
 	...

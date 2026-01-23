@@ -48,7 +48,7 @@ Some functions in the SDK can fail. These functions will return one of two objec
 
 We also exit the program via return because we know we know that any subsequent messages will fail if we could not open a valid port.
 
-Try this code out! Try running your program, and instead of passing in your actual Orca's rs422 port number, pass in a random number instead.
+Try this code out! Try running your program, and instead of passing in your actual ORCA's rs422 port number, pass in a random number instead.
 
 ## The OrcaResult Object
 

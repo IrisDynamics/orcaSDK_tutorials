@@ -3,7 +3,7 @@
 In this tutorial we will learn about errors that the motor itself detects and reports, and how to handle them from the SDKs perspective.
 
 ## Prerequisites
- - We highly recommend reading the Orca Series Reference Manual's section "Errors" before moving on. The reference manual can be found [on our downloads page](https://irisdynamics.com/downloads)
+ - We highly recommend reading the ORCA Series Reference Manual's section "Errors" before moving on. The reference manual can be found [on our downloads page](https://irisdynamics.com/downloads)
  - [SDK Error Handling](../04_ErrorHandling/README.md)
 
 ---
