@@ -59,7 +59,7 @@ int main()
 }
 ```
 
-The motor.open_serial_port() function triggers the Actuator object to obtain the serial port indicated by the passed in parameter. For this function, pass in the COM port number of your motor's rs422 cable.
+The motor.open_serial_port() function triggers the Actuator object to obtain the serial port indicated by the passed in parameter. For this function, pass in the COM port number of your motor's RS422 interface.
 
 After calling this method, you now have not only a virtual representation of your Orca, but a representation that is now connected to your actual motor.
 
