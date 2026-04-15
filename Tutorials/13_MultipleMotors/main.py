@@ -2,10 +2,15 @@ from pyorcasdk import Actuator, MotorMode
 
 
 KINEMATIC_STATUS = 319
-NUM_ORCAS = 2
+
+def check_num_orcas():
+    num_orcas = int(input(f"How many ORCA motors are you testing? "))
+    if num_orcas < 0 or isinstance(num_orcas, str):
+        raise ValueError("Can't use a letter or negative number")
+    return num_orcas
 
 
-def trigger_motion(motors, motion_id):
+def trigger_motion(motors, motion_id, num_orcas):
     """
     Activates Kinematic mode,
     Triggers the chosen motion,
@@ -15,8 +20,8 @@ def trigger_motion(motors, motion_id):
         motors (Actuator): The connected ORCA motors.
         motion_id (int): The user's chosen motion_id.
     """
-    motions_completed = [False, False]
-    printed_complete = [False, False]
+    motions_completed = [False] * num_orcas
+    printed_complete = [False] * num_orcas
 
     for motor in motors:
         motor.trigger_kinematic_motion(0)
@@ -34,8 +39,9 @@ def trigger_motion(motors, motion_id):
                 motions_completed[index] = True
 
                 if not printed_complete[index]:
-                    print(f"Motor {index} Motion {motion_number} Complete!")
+                    print(f"Motor {index + 1} Motion {motion_number} Complete!")
                     printed_complete[index] = True
+                break
 
 def sleep_orca(motors):
     """
@@ -49,15 +55,16 @@ def main():
     active_motion = None
 
     try:
-        motors = [Actuator(f"ORCA{i + 1}") for i in range(NUM_ORCAS)]
+        num_orcas = check_num_orcas()
+        motors = [Actuator(f"ORCA{i + 1}") for i in range(num_orcas)]
 
         print(
-            f"\nTesting {NUM_ORCAS} ORCAs\n"
-            if NUM_ORCAS > 1
-            else f"\nTesting {NUM_ORCAS} ORCA\n"
+            f"\nTesting {num_orcas} ORCAs\n"
+            if num_orcas > 1
+            else f"\nTesting {num_orcas} ORCA\n"
         )
 
-        for i in range(NUM_ORCAS):
+        for i in range(num_orcas):
             com_port = int(input(f"COM port (RS422) for ORCA {i + 1}: "))
             error = motors[i].open_serial_port(com_port)
 
@@ -79,20 +86,30 @@ def main():
             active_motion = input("\n>> Enter input: ")
 
             try:
-                active_motion = int(active_motion)
+                parsed_str = active_motion.lower()
+
+                if isinstance(active_motion, str) and active_motion in ("s", "q"):
+                    active_motion = parsed_str
+                else:
+                    active_motion = int(active_motion)
+
+                    match active_motion:
+                        case int() if 0 <= active_motion <= 32:
+                            trigger_motion(motors, active_motion, num_orcas)
+                        case "s":
+                            sleep_orca(motors)
+                        case "q":
+                            sleep_orca(motors)
+                            break
+
             except ValueError:
-                active_motion = active_motion.lower()
+                print(f'Invalid Input: {active_motion}\n')
+            except KeyboardInterrupt:
+                print("\nSIGINT received! Sleeping Motor(s)")
+                sleep_orca(motors)
 
-            match active_motion:
-                case int() if 0 <= active_motion <= 32:
-                    trigger_motion(motors, active_motion)
-                case "s":
-                    sleep_orca(motors)
-                case "q":
-                    break
-
-    except ValueError:
-        print(f"\nPlease enter a valid number \n")
+    except ValueError as e:
+        print(f"\nPlease enter a valid number: {e} \n")
 
 
 if __name__ == "__main__":
