@@ -1,3 +1,7 @@
+# ⛔️ DEPRECATED
+
+Please use https://docs.irisdynamics.com/sdk/tutorials/ for up to date orcaSDK and pyorcasdk tutorials.
+
 # orcaSDK_tutorials
 
 ## Introduction
